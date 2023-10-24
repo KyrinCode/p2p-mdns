@@ -1,4 +1,4 @@
-module p2p-mdns
+module node
 
 go 1.21.1
 
