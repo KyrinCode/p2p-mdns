@@ -4,7 +4,6 @@ go 1.21.1
 
 require (
 	github.com/libp2p/go-libp2p v0.31.0
-	github.com/libp2p/go-libp2p-core v0.20.1
 	github.com/libp2p/go-libp2p-pubsub v0.9.3
 )
 

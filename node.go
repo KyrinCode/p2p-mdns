@@ -33,7 +33,7 @@ func main() {
 	}
 
 	// view host details and addresses
-	fmt.Printf("[Host ID] %s\n", host.ID().Pretty())
+	fmt.Printf("[Host ID] %s\n", host.ID().String())
 	fmt.Printf("Assigned listening addresses:\n")
 	for _, addr := range host.Addrs() {
 		fmt.Printf("%s\n", addr.String())
@@ -107,7 +107,7 @@ func subscribe(subscriber *pubsub.Subscription, ctx context.Context, hostID peer
 				continue
 			}
 
-			fmt.Printf("Got message: %s, from: %s\n", string(msg.Data), msg.ReceivedFrom.Pretty())
+			fmt.Printf("Got message: %s, from: %s\n", string(msg.Data), msg.ReceivedFrom.String())
 		}
 	}
 }
@@ -121,10 +121,10 @@ type discoveryNotifee struct {
 // the PubSub system will automatically start interacting with them if they also
 // support PubSub.
 func (n *discoveryNotifee) HandlePeerFound(pi peer.AddrInfo) {
-	fmt.Printf("New peer discovered: %s\n", pi.ID.Pretty())
+	fmt.Printf("New peer discovered: %s\n", pi.ID.String())
 	err := n.h.Connect(context.Background(), pi)
 	if err != nil {
-		fmt.Printf("Error connecting to peer %s: %s\n", pi.ID.Pretty(), err)
+		fmt.Printf("Error connecting to peer %s: %s\n", pi.ID.String(), err)
 	}
 }
 
